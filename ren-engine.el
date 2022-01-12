@@ -188,18 +188,26 @@
 
   ;; code for syntax highlighting
   (setq font-lock-defaults '((ren-engine-font-lock-keywords)))
-  (setq newline 'ren-engine-newline)
+
+  ;; for comment processing in my-newline
+  (setq comment-start "#")
+  (comment-normalize-vars)
   
   
   (defun my-newline ()
 	"Make newline as Ren-Engine code."
 	(interactive)
-	(let ((start (point)) (cur-indent (current-indentation)))
-		(when (looking-back ":" 1)
+	(let ((cur-indent (current-indentation)) cs)
+	  (save-excursion
+		(setq cs (comment-beginning))
+		(when cs (goto-char cs))
+		(skip-chars-backward " \t")
+		(when (looking-back ":" 0)
 		  (setq cur-indent (+ cur-indent tab-width))
 		)
-		(insert "\n")
-		(indent-line-to cur-indent)
+	  )
+	  (insert "\n")
+	  (indent-line-to cur-indent)
 	)
   )
   (global-set-key (kbd "RET") 'my-newline)
@@ -219,7 +227,6 @@
 		  
 		  (setq i start)
 		  (goto-char i)
-		  (beginning-of-line)
 		  (while (<= i end)
 			(skip-chars-forward " \t")
 			(insert "\t")
@@ -257,14 +264,17 @@
 		  (goto-char i)
 		  (while (<= i end)
 		  	(skip-chars-forward " \t")
-			(if (looking-back "\t" 1)
+			(if (looking-back "\t" 0)
 				(progn (delete-char -1) (setq end (- end 1)))
-			  (when (looking-back "    " 4)
+			  (when (looking-back "    " 0)
 				(progn (delete-char -4) (setq end (- end 4)))
 			  )
 			)
 			(forward-line)
-			(setq i (point))
+			(if (< (point) (point-max)) ; moved?
+				(setq i (point))
+			  (setq i (1+ end)) ; break
+			)
 		  )
 		  (goto-char start)
 		  (push-mark end)
@@ -273,9 +283,10 @@
 	  (save-excursion
 		(beginning-of-line)
 		(skip-chars-forward " \t")
-		(if (looking-back "\t" 1)
+		(if (looking-back "\t" 0)
 			(delete-char -1)
-		  (when (looking-back "    " 4) (delete-char -4)))
+		  (when (looking-back "    " 0) (delete-char -4))
+		)
 	  )
 	)
   )
