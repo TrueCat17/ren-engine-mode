@@ -292,6 +292,37 @@
   )
   (global-set-key (kbd "<backtab>") 'my-untab)
 
+  (defun my-start ()
+	"Start Ren-Engine file <start.exe> (win) or <start.sh> (linux)"
+	(interactive)
+	(let* ((file-name (buffer-file-name)) (path (file-name-directory file-name)) win-path linux-path prev-path)
+	  (while path
+		(setq win-path (concat path "start.exe"))
+		(setq linux-path (concat path "start.sh"))
+		(if (and (file-exists-p win-path) ; in directory to start?
+				 (file-exists-p linux-path))
+			(progn ; start
+			  (if (or (eq system-type "windows-nt")
+					  (eq system-type "cygwin"))
+				  (start-process "Ren-Engine" "Ren-Engine output" win-path)
+				(start-process "Ren-Engine" "Ren-Engine output" linux-path)
+			  )
+			  (setq path nil) ; and break <while>
+		    )
+		  (progn ; else
+			(setq prev-path path)
+			(setq path (file-name-directory (directory-file-name path))) ; path = parent-directory of path
+			(when (string= prev-path path)
+			  (setq path nil)
+			  (message "Ren-Engine start files not found")
+			)
+		  )
+		)
+	  )
+	)
+  )
+  (global-set-key (kbd "<f5>") 'my-start)
+  
   (set-syntax-table ren-engine-mode-syntax-table))
 
 
