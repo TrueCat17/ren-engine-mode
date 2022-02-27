@@ -101,6 +101,7 @@
 "rotate"
 "size"
 "spacing"
+"strikethrough"
 "style"
 "text_size"
 "text_align"
