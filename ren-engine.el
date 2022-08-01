@@ -80,6 +80,7 @@
 "zorder"
 
 "action"
+"alternate"
 "align"
 "alpha"
 "anchor"
@@ -99,6 +100,7 @@
 "outlinecolor"
 "pos"
 "rotate"
+"save"
 "size"
 "spacing"
 "strikethrough"
