@@ -326,6 +326,13 @@
   )
   (global-set-key (kbd "<f5>") 'my-start)
   
+  (defun my-show-output ()
+	"Show output of finished Ren-Engine"
+	(interactive)
+	(switch-to-buffer "Ren-Engine output")
+  )
+  (global-set-key (kbd "<f6>") 'my-show-output)
+  
   (set-syntax-table ren-engine-mode-syntax-table))
 
 

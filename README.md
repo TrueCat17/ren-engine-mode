@@ -12,3 +12,8 @@ Add file `ren-engine.el` to this path.
 ```elisp
 (require 'ren-engine)
 ```
+
+# Hotkeys
+
+* `F5` for start Ren-Engine (and add output to buffer "Ren-Engine output").
+* `F6` for show output buffer.
