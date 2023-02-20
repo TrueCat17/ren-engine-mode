@@ -104,6 +104,7 @@
 "rotate"
 "save"
 "size"
+"skip_mouse"
 "spacing"
 "strikethrough"
 "style"
