@@ -301,18 +301,18 @@
   (defun my-start ()
 	"Start Ren-Engine file <start.exe> (win) or <start.sh> (linux)"
 	(interactive)
-	(let* ((file-name (buffer-file-name)) (path (file-name-directory file-name)) win-path linux-path prev-path)
+	(let* ((file-name (buffer-file-name)) (path (file-name-directory file-name)) exe-path prev-path)
 	  (while path
 		(setq win-path (concat path "start.exe"))
 		(setq linux-path (concat path "start.sh"))
-		(if (and (file-exists-p win-path) ; in directory to start?
-				 (file-exists-p linux-path))
+		(if (file-exists-p (concat path "resources")) ; in directory to start?
 			(progn ; start
 			  (if (or (eq system-type "windows-nt")
 					  (eq system-type "cygwin"))
-				  (start-process "Ren-Engine" "Ren-Engine output" win-path)
-				(start-process "Ren-Engine" "Ren-Engine output" linux-path)
+				  (setq exe-path (car (file-expand-wildcards (concat path "*.exe"))))
+				(setq   exe-path (car (file-expand-wildcards (concat path "*.sh"))))
 			  )
+			  (start-process "Ren-Engine" "Ren-Engine output" exe-path)
 			  (setq path nil) ; and break <while>
 		    )
 		  (progn ; else
@@ -320,7 +320,7 @@
 			(setq path (file-name-directory (directory-file-name path))) ; path = parent-directory of path
 			(when (string= prev-path path)
 			  (setq path nil)
-			  (message "Ren-Engine start files not found")
+			  (message "Ren-Engine directory <resources> not found")
 			)
 		  )
 		)
