@@ -124,6 +124,16 @@
 "ysize"
 "yzoom"
 "zoom"
+"hover_bold"
+"hover_color"
+"hover_font"
+"hover_italic"
+"hover_outlinecolor"
+"hover_strikethrough"
+"hover_text_size"
+"hover_text_align"
+"hover_text_valign"
+"hover_underline"
 ))
 
 
