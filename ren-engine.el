@@ -88,6 +88,7 @@
 "bold"
 "clipping"
 "color"
+"corner_sizes"
 "crop"
 "font"
 "ground"
@@ -174,8 +175,8 @@
 ))
 
 (defvar x-python-builtin '(
-"abs" "all" "any" "apply" "basestring" "bool" "buffer" "callable"
-"chr" "classmethod" "cmp" "coerce" "compile" "complex"
+"abs" "absolute" "all" "any" "apply" "basestring" "bool" "buffer"
+"callable" "chr" "classmethod" "cmp" "coerce" "compile" "complex"
 "copyright" "credits" "delattr" "dict" "dir" "divmod"
 "enumerate" "eval" "execfile" "exit" "file" "filter" "float"
 "frozenset" "getattr" "globals" "hasattr" "hash" "help"
@@ -183,9 +184,8 @@
 "iter" "len" "license" "list" "locals" "long" "map" "max"
 "min" "object" "oct" "open" "ord" "pow" "property" "quit"
 "range" "raw_input" "reduce" "reload" "repr" "reversed"
-"round" "set" "setattr" "slice" "sorted" "staticmethod"
-"str" "sum" "super" "tuple" "type" "unichr" "unicode" "vars"
-"xrange" "zip"
+"round" "set" "setattr" "slice" "sorted" "staticmethod" "str"
+"sum" "super" "tuple" "type" "vars" "zip"
 ))
 
 
