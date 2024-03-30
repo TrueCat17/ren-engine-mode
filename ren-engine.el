@@ -177,17 +177,15 @@
 ))
 
 (defvar x-python-builtin '(
-"abs" "absolute" "all" "any" "apply" "basestring" "bool" "buffer"
-"callable" "chr" "classmethod" "cmp" "coerce" "compile" "complex"
-"copyright" "credits" "delattr" "dict" "dir" "divmod"
-"enumerate" "eval" "execfile" "exit" "file" "filter" "float"
-"frozenset" "getattr" "globals" "hasattr" "hash" "help"
-"hex" "id" "input" "int" "intern" "isinstance" "issubclass"
-"iter" "len" "license" "list" "locals" "long" "map" "max"
-"min" "object" "oct" "open" "ord" "pow" "property" "quit"
-"range" "raw_input" "reduce" "reload" "repr" "reversed"
-"round" "set" "setattr" "slice" "sorted" "staticmethod" "str"
-"sum" "super" "tuple" "type" "vars" "zip"
+"abs" "absolute" "all" "any" "bool" "callable" "chr"
+"classmethod" "compile" "complex" "delattr" "dict" "dir"
+"divmod" "enumerate" "eval" "filter" "float" "frozenset"
+"getattr" "globals" "hasattr" "hash" "hex" "id" "int"
+"isinstance" "issubclass" "iter" "len" "list" "locals"
+"map" "max" "min" "object" "oct" "open" "ord" "pow"
+"property" "range" "repr" "reversed" "round" "set"
+"setattr" "slice" "sorted" "staticmethod" "str" "sum"
+"super" "tuple" "type" "vars" "zip"
 ))
 
 
