@@ -90,6 +90,8 @@
 "color"
 "corner_sizes"
 "crop"
+"delay"
+"first_delay"
 "font"
 "ground"
 "hover"
